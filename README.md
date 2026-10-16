@@ -50,6 +50,15 @@ A aplicação aponta para `App_Data/BancoDeDados.mdf` por meio da conexão `Banc
 
 Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Server que será usado pela aplicação e ajuste a conexão `BancoDeDados` em `Web.config` para esse ambiente. Não é necessário executar o script manualmente quando a aplicação tem acesso ao LocalDB configurado.
 
+## Solução de problemas
+
+Se o build após clonar a solução apontar incompatibilidade nas versões do jQuery ou do jQuery Validation, abra o Console do Gerenciador de Pacotes no Visual Studio e execute:
+
+```powershell
+Update-Package jQuery -Version 3.6.0 -ProjectName "FI.WebAtividadeEntrevista"
+Update-Package jQuery.Validation -Version 1.19.5 -ProjectName "FI.WebAtividadeEntrevista"
+```
+
 ## Fluxo de verificação
 
 1. Abra a listagem de clientes e escolha **Cadastrar Cliente**.
