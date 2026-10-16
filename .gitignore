@@ -1,0 +1,11 @@
+.vs/
+**/bin/
+**/obj/
+packages/
+tmp/
+*.user
+*.suo
+*.cache
+FI.WebAtividadeEntrevista/App_Data/*.mdf
+FI.WebAtividadeEntrevista/App_Data/*.ldf
+output/pdf/Evidencias_Teste_Cliente_Beneficiarios.pdf

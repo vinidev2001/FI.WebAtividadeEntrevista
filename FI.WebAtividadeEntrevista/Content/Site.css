@@ -1,0 +1,27 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (min-width: 992px) {
+    .beneficiario-row {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .beneficiario-row::before,
+    .beneficiario-row::after {
+        display: none;
+    }
+
+    .beneficiario-row .beneficiario-action {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
