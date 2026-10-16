@@ -72,16 +72,16 @@
     <EmbeddedResource Include="DAL\Beneficiarios\Procedures\FI_SP_ConsBeneficiariosPorCliente.sql" />
     <EmbeddedResource Include="DAL\Beneficiarios\Procedures\FI_SP_DelBeneficiario.sql" />
     <EmbeddedResource Include="DAL\Beneficiarios\Procedures\FI_SP_IncBeneficiario.sql" />
-    <Content Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Scripts\jquery-3.4.1.min.map" />
-    <None Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="Scripts\jquery-3.6.0.min.map" />
+    <None Include="Scripts\jquery-3.6.0.slim.min.map" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

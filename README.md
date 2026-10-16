@@ -61,7 +61,7 @@ Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Serve
 
 ## Solução de problemas
 
-Se o NuGet informar incompatibilidade de versão do jQuery ou do jQuery Validation, abra o Console do Gerenciador de Pacotes no Visual Studio e execute os comandos para os projetos indicados:
+As versões do jQuery e do jQuery Validation estão definidas nos arquivos `packages.config` dos projetos. Depois de atualizar o repositório, restaure os pacotes NuGet e faça o rebuild. Se uma cópia antiga ainda indicar jQuery 3.4.1, atualize-a com `git pull origin main` antes de restaurar.
 
 ```powershell
 Update-Package jQuery -Version 3.6.0 -ProjectName "FI.WebAtividadeEntrevista"
@@ -69,7 +69,7 @@ Update-Package jQuery.Validation -Version 1.19.5 -ProjectName "FI.WebAtividadeEn
 Update-Package jQuery -Version 3.6.0 -ProjectName "FI.AtividadeEntrevista"
 ```
 
-O aviso `NU1902` referente ao jQuery 3.4.1 vem do projeto `FI.AtividadeEntrevista`. A atualização do pacote deve alterar também `FI.AtividadeEntrevista/packages.config`; `Clean` e `Rebuild` sozinhos não atualizam versões NuGet.
+O aviso `NU1902` referente ao jQuery 3.4.1 vinha da versão antiga do projeto `FI.AtividadeEntrevista`. `Clean` e `Rebuild` sozinhos não atualizam versões NuGet; a versão do pacote precisa estar atualizada no `packages.config`.
 
 Se o LocalDB informar que já existe uma base com o mesmo nome, feche outras instâncias do aplicativo e desconecte a base anteriormente anexada pelo SQL Server Object Explorer. Se o arquivo MDF não aparecer depois do clone, atualize a cópia com `git pull origin main` e confirme que `FI.WebAtividadeEntrevista/App_Data/BancoDeDados.mdf` e `BancoDeDados_log.ldf` estão presentes.
 
