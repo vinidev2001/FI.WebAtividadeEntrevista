@@ -61,7 +61,7 @@ Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Serve
 
 ## Evidências de teste
 
-O projeto inclui um relatório em PDF com capturas de tela que documentam nove cenários funcionais relacionados ao cadastro de clientes e beneficiários:
+Foi produzido localmente um relatório em PDF com capturas de tela que documentam nove cenários funcionais relacionados ao cadastro de clientes e beneficiários:
 
 - Exibição do campo CPF e sua máscara.
 - Obrigatoriedade do CPF.
