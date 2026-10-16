@@ -51,15 +51,24 @@ As validações são feitas no navegador para orientar o preenchimento e também
 
 2. Abra `FI.WebAtividadeEntrevista.sln` no Visual Studio.
 3. Aguarde ou solicite a restauração dos pacotes NuGet da solução.
-4. Selecione **Build > Rebuild Solution**.
-5. Defina `FI.WebAtividadeEntrevista` como projeto de inicialização.
-6. Execute com `F5` ou `Ctrl+F5`.
+4. No **Console do Gerenciador de Pacotes NuGet**, reinstale o provedor Roslyn do projeto web:
+
+   ```powershell
+   Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -Reinstall -ProjectName "FI.WebAtividadeEntrevista"
+   ```
+
+   Esta etapa é necessária para que o build copie `csc.exe` para `bin\roslyn`. Sem esses arquivos, a aplicação pode falhar ao iniciar com o erro de caminho não encontrado para `bin\roslyn\csc.exe`.
+5. Selecione **Build > Rebuild Solution**.
+6. Defina `FI.WebAtividadeEntrevista` como projeto de inicialização.
+7. Execute com `F5` ou `Ctrl+F5`.
 
 A aplicação aponta para `App_Data/BancoDeDados.mdf` por meio da conexão `BancoDeDados` em `FI.WebAtividadeEntrevista/Web.config`. O arquivo MDF e seu log são incluídos no repositório para que o banco base `CLIENTES` esteja disponível depois do clone. No início da aplicação, `DatabaseInitializer` cria a coluna de CPF, a tabela de beneficiários, os índices e as stored procedures que estiverem faltando. A inicialização pode ser executada novamente sem recriar objetos existentes.
 
 Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Server que será usado pela aplicação e ajuste a conexão `BancoDeDados` em `Web.config` para esse ambiente. Não é necessário executar o script manualmente quando a aplicação tem acesso ao LocalDB configurado.
 
 ## Solução de problemas
+
+Se a aplicação falhar ao iniciar com `Não foi possível localizar .../bin/roslyn/csc.exe`, confirme que executou a reinstalação do pacote `Microsoft.CodeDom.Providers.DotNetCompilerPlatform` indicada no passo 4 e faça **Build > Rebuild Solution** novamente.
 
 As versões do jQuery e do jQuery Validation estão definidas nos arquivos `packages.config` dos projetos. Depois de atualizar o repositório, restaure os pacotes NuGet e faça o rebuild. Se uma cópia antiga ainda indicar jQuery 3.4.1, atualize-a com `git pull origin main` antes de restaurar.
 
