@@ -46,7 +46,7 @@ As validações são feitas no navegador para orientar o preenchimento e também
 3. Defina `FI.WebAtividadeEntrevista` como projeto de inicialização.
 4. Execute com `F5` ou `Ctrl+F5`.
 
-A aplicação aponta para `App_Data/BancoDeDados.mdf` por meio da conexão `BancoDeDados` em `FI.WebAtividadeEntrevista/Web.config`. No início da aplicação, `DatabaseInitializer` cria a coluna de CPF, a tabela de beneficiários, os índices e as stored procedures que estiverem faltando. A inicialização pode ser executada novamente sem recriar objetos existentes.
+A aplicação aponta para `App_Data/BancoDeDados.mdf` por meio da conexão `BancoDeDados` em `FI.WebAtividadeEntrevista/Web.config`. O arquivo MDF e seu log são incluídos no repositório para que o banco base `CLIENTES` esteja disponível depois do clone. No início da aplicação, `DatabaseInitializer` cria a coluna de CPF, a tabela de beneficiários, os índices e as stored procedures que estiverem faltando. A inicialização pode ser executada novamente sem recriar objetos existentes.
 
 Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Server que será usado pela aplicação e ajuste a conexão `BancoDeDados` em `Web.config` para esse ambiente. Não é necessário executar o script manualmente quando a aplicação tem acesso ao LocalDB configurado.
 
@@ -86,4 +86,4 @@ O documento apresenta o resultado e as capturas de cada cenário. As evidências
 
 ## Persistência
 
-Os dados ficam no arquivo MDF configurado em `App_Data` e não expiram ao fechar o navegador ou reiniciar a aplicação. Cada cópia ou extração do projeto tem seu próprio arquivo de banco; para consultar os mesmos registros, execute sempre a cópia que contém o MDF onde eles foram gravados.
+Os dados ficam no arquivo MDF versionado em `App_Data` e não expiram ao fechar o navegador ou reiniciar a aplicação. Cada cópia ou extração do projeto tem seu próprio arquivo de banco; para consultar os mesmos registros, execute sempre a cópia que contém o MDF onde eles foram gravados. Se o LocalDB informar que já existe uma base com o mesmo nome, feche outras instâncias do projeto e desconecte a base anteriormente anexada antes de executar o clone.
