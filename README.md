@@ -38,13 +38,22 @@ As validações são feitas no navegador para orientar o preenchimento e também
 - Windows com Visual Studio e suporte ao desenvolvimento ASP.NET para .NET Framework.
 - .NET Framework 4.8 Developer Pack.
 - SQL Server Express LocalDB.
+- Git para clonar o repositório.
 
 ## Como executar
 
-1. Abra `FI.WebAtividadeEntrevista.sln` no Visual Studio.
-2. Restaure os pacotes NuGet da solução.
-3. Defina `FI.WebAtividadeEntrevista` como projeto de inicialização.
-4. Execute com `F5` ou `Ctrl+F5`.
+1. Clone o repositório e entre na pasta:
+
+   ```powershell
+   git clone https://github.com/vinidev2001/FI.WebAtividadeEntrevista.git
+   cd FI.WebAtividadeEntrevista
+   ```
+
+2. Abra `FI.WebAtividadeEntrevista.sln` no Visual Studio.
+3. Aguarde ou solicite a restauração dos pacotes NuGet da solução.
+4. Selecione **Build > Rebuild Solution**.
+5. Defina `FI.WebAtividadeEntrevista` como projeto de inicialização.
+6. Execute com `F5` ou `Ctrl+F5`.
 
 A aplicação aponta para `App_Data/BancoDeDados.mdf` por meio da conexão `BancoDeDados` em `FI.WebAtividadeEntrevista/Web.config`. O arquivo MDF e seu log são incluídos no repositório para que o banco base `CLIENTES` esteja disponível depois do clone. No início da aplicação, `DatabaseInitializer` cria a coluna de CPF, a tabela de beneficiários, os índices e as stored procedures que estiverem faltando. A inicialização pode ser executada novamente sem recriar objetos existentes.
 
@@ -52,12 +61,17 @@ Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Serve
 
 ## Solução de problemas
 
-Se o build após clonar a solução apontar incompatibilidade nas versões do jQuery ou do jQuery Validation, abra o Console do Gerenciador de Pacotes no Visual Studio e execute:
+Se o NuGet informar incompatibilidade de versão do jQuery ou do jQuery Validation, abra o Console do Gerenciador de Pacotes no Visual Studio e execute os comandos para os projetos indicados:
 
 ```powershell
 Update-Package jQuery -Version 3.6.0 -ProjectName "FI.WebAtividadeEntrevista"
 Update-Package jQuery.Validation -Version 1.19.5 -ProjectName "FI.WebAtividadeEntrevista"
+Update-Package jQuery -Version 3.6.0 -ProjectName "FI.AtividadeEntrevista"
 ```
+
+O aviso `NU1902` referente ao jQuery 3.4.1 vem do projeto `FI.AtividadeEntrevista`. A atualização do pacote deve alterar também `FI.AtividadeEntrevista/packages.config`; `Clean` e `Rebuild` sozinhos não atualizam versões NuGet.
+
+Se o LocalDB informar que já existe uma base com o mesmo nome, feche outras instâncias do aplicativo e desconecte a base anteriormente anexada pelo SQL Server Object Explorer. Se o arquivo MDF não aparecer depois do clone, atualize a cópia com `git pull origin main` e confirme que `FI.WebAtividadeEntrevista/App_Data/BancoDeDados.mdf` e `BancoDeDados_log.ldf` estão presentes.
 
 ## Fluxo de verificação
 
@@ -86,4 +100,4 @@ O documento apresenta o resultado e as capturas de cada cenário. As evidências
 
 ## Persistência
 
-Os dados ficam no arquivo MDF versionado em `App_Data` e não expiram ao fechar o navegador ou reiniciar a aplicação. Cada cópia ou extração do projeto tem seu próprio arquivo de banco; para consultar os mesmos registros, execute sempre a cópia que contém o MDF onde eles foram gravados. Se o LocalDB informar que já existe uma base com o mesmo nome, feche outras instâncias do projeto e desconecte a base anteriormente anexada antes de executar o clone.
+Os dados ficam no arquivo MDF versionado em `App_Data` e não expiram ao fechar o navegador ou reiniciar a aplicação. Cada cópia ou extração do projeto tem seu próprio arquivo de banco; para consultar os mesmos registros, execute sempre a cópia que contém o MDF onde eles foram gravados.
