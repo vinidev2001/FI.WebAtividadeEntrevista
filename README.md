@@ -61,7 +61,7 @@ Para preparar o banco manualmente, execute `Banco/Script_Banco.sql` no SQL Serve
 
 ## Evidências de teste
 
-Foi produzido localmente um relatório em PDF com capturas de tela que documentam nove cenários funcionais relacionados ao cadastro de clientes e beneficiários:
+As evidências de teste são encaminhadas ao avaliador como anexo por e-mail e WhatsApp. O relatório reúne capturas de tela de nove cenários funcionais relacionados ao cadastro de clientes e beneficiários:
 
 - Exibição do campo CPF e sua máscara.
 - Obrigatoriedade do CPF.
@@ -73,7 +73,7 @@ Foi produzido localmente um relatório em PDF com capturas de tela que documenta
 - Alteração de beneficiário.
 - Exclusão de beneficiário.
 
-O documento apresenta o resultado e as capturas de cada cenário. O relatório local está em `output/pdf/Evidencias_Teste_Cliente_Beneficiarios.pdf`. Ele não é incluído neste repositório público porque as capturas mostram números completos de CPF. As evidências são verificações manuais e não representam uma suíte de testes automatizados.
+O documento apresenta o resultado e as capturas de cada cenário. As evidências correspondem a verificações manuais e não representam uma suíte de testes automatizados.
 
 ## Persistência
 
